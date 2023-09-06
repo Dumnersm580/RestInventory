@@ -1,0 +1,5 @@
+﻿@inject RestInventorySystem.Data.Services.SeederService _seederService;
+@inject RestInventorySystem.Data.Repositories.Repository<User> UserRepository
+@inject ISnackbar SnackBar;
+
+<MudButton OnClick="@SeedData">Seed</MudButton>
