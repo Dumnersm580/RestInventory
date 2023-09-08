@@ -17,8 +17,8 @@ public partial class Users
 	private readonly TableEditButtonPosition EditButtonPosition = TableEditButtonPosition.End;
 	private readonly TableEditTrigger EditTrigger = TableEditTrigger.RowClick;
 	private IEnumerable<User> Elements;
-
-	[CascadingParameter]
+    private Guid? PartToDeleteId;
+    [CascadingParameter]
 	private Action<string> SetAppBarTitle { get; set; }
 
 	protected override void OnInitialized()
@@ -70,4 +70,40 @@ public partial class Users
 	{
 		StateHasChanged();
 	}
+
+    private async Task DeleteUser(Guid userId)
+    {
+        PartToDeleteId = userId; // You can reuse the existing PartToDeleteId property for this purpose
+
+        var confirmationResult = await DialogService.ShowMessageBox(
+            "Delete User",
+            "Are you sure you want to delete this user?",
+            yesText: "Yes",
+            noText: "No"
+        );
+
+        if (confirmationResult == true)
+        {
+            try
+            {
+                var user = Elements.FirstOrDefault(x => x.Id == userId);
+                if (user != null)
+                {
+                    UserRepository.Remove(user);
+                    Snackbar.Add("User deleted successfully.", Severity.Success);
+                }
+
+                // Refresh the Elements collection with the updated list of users after deletion
+                Elements = UserRepository.GetAll();
+
+                // Notify Blazor that a state change has occurred and it should re-render the component
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions that may occur during deletion
+                Snackbar.Add($"An error occurred while deleting the user: {ex.Message}", Severity.Error);
+            }
+        }
+    }
 }

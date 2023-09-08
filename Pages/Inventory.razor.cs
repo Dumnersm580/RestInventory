@@ -129,13 +129,18 @@ public partial class Inventory
         {
             try
             {
-                // Call the DeleteSpare method here to delete the spare
-                Spare.DeleteSpare(Elements.ToList(), partId);
+                var item = Elements.FirstOrDefault(x => x.Id == partId);
+                if (item != null)
+                {
+                    SpareRepository.Remove(item);
+                    Snackbar.Add("Part deleted successfully.", Severity.Success);
+                }
 
-                // Update the Elements collection with the updated list of spares after deletion
-                Elements = Elements.Where(s => s.Id != partId);
+                // Refresh the Elements collection with the updated list of spares after deletion
+                Elements = SpareRepository.GetAll();
 
-                Snackbar.Add("Part deleted successfully.", Severity.Success);
+                // Notify Blazor that a state change has occurred and it should re-render the component
+                StateHasChanged();
             }
             catch (Exception ex)
             {
@@ -144,6 +149,7 @@ public partial class Inventory
             }
         }
     }
+
 
 
 }

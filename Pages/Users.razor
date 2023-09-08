@@ -89,6 +89,11 @@
         <MudTd DataLabel="Initial Password">@context.HasInitialPassword</MudTd>
         <MudTd Style="white-space: nowrap;" DataLabel="Created At">@context.CreatedAt</MudTd>
         <MudTd DataLabel="Created By"><MudChip>@context.CreatedBy</MudChip></MudTd>        
+        <MudTd DataLabel="Action">
+                <MudTooltip Text="Delete Part">
+                    <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="() => DeleteUser(context.Id)" />
+                </MudTooltip>
+        </MudTd>
     </RowEditingTemplate>
     <PagerContent>
         <MudTablePager PageSizeOptions="new int[] { 25, 50, 75, 100}" />

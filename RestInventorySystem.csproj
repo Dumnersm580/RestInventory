@@ -37,7 +37,7 @@
         <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
         <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
         <GenerateTestArtifacts>True</GenerateTestArtifacts>
-        <AppInstallerUri>C:\temp</AppInstallerUri>
+        <AppInstallerUri>C:\Users\youmy\OneDrive\Documents\GitHub</AppInstallerUri>
         <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
         <AssemblyName>$(MSBuildProjectName)</AssemblyName>
     </PropertyGroup>
