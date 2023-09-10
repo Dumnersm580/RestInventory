@@ -17,7 +17,7 @@
         <ApplicationTitle>RestInv</ApplicationTitle>
 
         <!-- App Identifier -->
-        <ApplicationId>com.companyname.RestInventorySystem</ApplicationId>
+        <ApplicationId>com.restrobotics.RestInventorySystem</ApplicationId>
         <ApplicationIdGuid>082A4B34-31E2-40AF-B128-8FFC7F395313</ApplicationIdGuid>
 
         <!-- Versions -->
