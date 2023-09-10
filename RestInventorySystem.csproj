@@ -14,7 +14,7 @@
         <EnableDefaultCssItems>false</EnableDefaultCssItems>
 
         <!-- Display name -->
-        <ApplicationTitle>Bikare</ApplicationTitle>
+        <ApplicationTitle>RestInv</ApplicationTitle>
 
         <!-- App Identifier -->
         <ApplicationId>com.companyname.RestInventorySystem</ApplicationId>
